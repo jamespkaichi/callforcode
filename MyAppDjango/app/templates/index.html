@@ -1,0 +1,37 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+{% block title %} 灾害自救小常识{%endblock %}
+{% block headmessage %}
+<h3 style="font-family: 楷体;">应急常识</h3>
+{% endblock %}
+{% block content %}
+  {% for post in posts %}
+ <div class="panel-default">
+  <div class="panel-heading">
+    <p style="font-family: 微软雅黑;font-size: 14pt;font-weight: bold;">
+    	<a href="/post/{{post.slug}}">{{post.title}}</a>
+    </p>
+  </div>
+  <div class="panel-body" style="background-color: #efefef">
+     <p>{{post.body | truncatechars:40}}</p>
+  </div>  
+  <div class="panel-footer" style="background-color: #efefef">
+  <p> 发布时间：{{post.pub_date|date:"Y M d, h:m:s"}}</p>
+  </div>
+</div>
+   {% endfor %}
+ {% endblock %}
+ {% block temperature %}
+ <div class="panel-body" style="background-color: #efefef">
+    {% for place in place_list %}
+      <p>{{place}}</p>
+    {% endfor %}
+</div>  
+ {% endblock %}
+ {% block carlocation %}
+ <div class="panel-body" style="background-color: #efefef">
+  {% for car in position_list %}
+    <p>{{car}}</p>
+  {% endfor %}
+</div>  
+ {% endblock %}

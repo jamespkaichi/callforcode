@@ -1,0 +1,10 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: MyAppDjango
+  buildpack: python_buildpack
+  command: gunicorn --env DJANGO_SETTINGS_MODULE=MyAppDjango.settings.production MyAppDjango.wsgi -b 0.0.0.0:$PORT
+  memory: 256MB
+  domain: us-south.cf.appdomain.cloud
+  host: myappdjango
